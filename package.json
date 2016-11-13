@@ -1,6 +1,6 @@
 {
     "name": "url-snippets",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Get the page title, description, images by given URL",
     "main": "index.js",
     "scripts": {
