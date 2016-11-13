@@ -30,7 +30,14 @@ function snippets (url, options, callback) {
             html: ['isValidUrl', function (cb, results) {
 
                 request (url, function (err, res, body) {
-                    cb (err, service.trimText(body));
+                    var content = null;
+
+                    if (!err && res.statusCode == 200) {
+                        content = service.trimText(body);
+                    }
+
+                    cb(err, content);
+
                 });
 
             }],
@@ -57,19 +64,19 @@ function snippets (url, options, callback) {
             }
 
             if (options.title || _.isEmpty(options)) {
-                response.title = results.title;
+                response.title = results.title || null;
             }
 
             if (options.meta || _.isEmpty(options)) {
-                response.meta = results.meta;
+                response.meta = results.meta || {};
             }
 
             if (options.img || _.isEmpty(options)) {
-                response.img = results.img;
+                response.img = results.img || [];
             }
 
             if (options.p || _.isEmpty(options)) {
-                response.p = results.p;
+                response.p = results.p || [];
             }
 
             if (options.html) {
