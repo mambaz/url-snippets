@@ -68,7 +68,7 @@ exports.getPageTitle = function (body) {
 
         var $ = cheerio.load(body);
 
-        return trimText($('title').text());
+        return trimText($('head title').text());
     }
 
 }
